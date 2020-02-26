@@ -9,12 +9,15 @@ import time
 
 hd = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'}#请求头
 
+#设置输出路径
+output_path = './reviews.txt'
+
 #按发布时间排序的单机游戏爬取，其中“%E5%8D%95%E6%9C%BA”中文“单机的代码”
 base_url = 'https://www.taptap.com/tag/%E5%8D%95%E6%9C%BA?sort=released&page='
 start_url = 'https://www.taptap.com/tag/%E5%8D%95%E6%9C%BA?sort=released&page=19'#单页面基础网址
 present_url = 'https://www.taptap.com/tag/%E5%8D%95%E6%9C%BA?sort=released&page=19'#当前地址
 
-output_path = './reviews.txt'#输出路径
+
 
 data_review = pd.DataFrame(columns=['game_id','user_id','issue_time','user_score','content','phone_type','fun','up','down','game_time'])#存储数据的dataframe
 data_game_name = pd.DataFrame(columns=['item_id','item_name'])#寸游戏id和名称
