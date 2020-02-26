@@ -14,6 +14,8 @@ base_url = 'https://www.taptap.com/tag/%E5%8D%95%E6%9C%BA?sort=released&page='
 start_url = 'https://www.taptap.com/tag/%E5%8D%95%E6%9C%BA?sort=released&page=19'#单页面基础网址
 present_url = 'https://www.taptap.com/tag/%E5%8D%95%E6%9C%BA?sort=released&page=19'#当前地址
 
+output_path = './reviews.txt'#输出路径
+
 data_review = pd.DataFrame(columns=['game_id','user_id','issue_time','user_score','content','phone_type','fun','up','down','game_time'])#存储数据的dataframe
 data_game_name = pd.DataFrame(columns=['item_id','item_name'])#寸游戏id和名称
 
@@ -51,13 +53,13 @@ for i in range(1000):#单机游戏数少于1000页
             total_num = total_num + 1
             #if (total_num % 5) == 0:
             print('已扫描' + str(total_num) + '款游戏')
-            data_game_name.to_csv(r'D:\pycode\毕业论文\rawdata\game_id.txt',index = False, encoding='utf-8', sep = '\t')
-            data_review.to_csv(r'D:\pycode\毕业论文\rawdata\reviews.txt',index = False, encoding='utf-8', sep = '\t')
+            data_game_name.to_csv(output_path,index = False, encoding='utf-8', sep = '\t')
+            data_review.to_csv(output_path,index = False, encoding='utf-8', sep = '\t')
         
         #跳页
         present_url = base_url + str(i+2)
         
         
-data_game_name.to_csv(r'D:\pycode\毕业论文\rawdata\game_id.txt',index = False, encoding='utf-8', sep = '\t')
-data_review.to_csv(r'D:\pycode\毕业论文\rawdata\reviews.txt',index = False, encoding='utf-8', sep = '\t')              
+data_game_name.to_csv(output_path,index = False, encoding='utf-8', sep = '\t')
+data_review.to_csv(output_path,index = False, encoding='utf-8', sep = '\t')              
 print('爬取完毕')    
